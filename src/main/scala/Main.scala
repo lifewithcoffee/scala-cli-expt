@@ -2,21 +2,27 @@ import org.rogach.scallop._
 
 object Main extends App{
 
-  val opts =  new ScallopConf(args) {
-    banner("""
-NDE/SCEP Certificate enrollment prototype
+  val opts = Scallop(List("-d","--num-limbs","1"))
+    .version("test 1.2.3 (c) 2012 Mr Placeholder")
 
-Example: java -jar demo.jar --dn CN=Test --nde-url http://www.example.com --password password
+    .banner("""Usage: test [OPTION]... [pet-name]
+              |test is an awesome program, which does something funny
+              |Options:
+              |""".stripMargin)
+    .footer("\nFor all other tricks, consult the documentation!")
 
-For usage see below:
-           """)
+    .opt[Boolean]("donkey", descr = "use donkey mode")
+    .opt[Int]("num-limbs", 'k',
+      "number of libms", required = true)
+    .opt[List[Double]]("params")
+    .opt[String]("debug", hidden = true)
+    .props[String]('D',"some key-value pairs")
 
-    val ndeUrl = opt[String]("nde-url")
-    val password = opt[String]("password", descr = "set the password")
-    val capi = toggle("capi", prefix = "no-", descrYes = "enable adding to Windows key-store", descrNo = "disable adding to Windows key-store")
-    val version = opt[Boolean]("version", noshort = true, descr = "Print version")
-    val help = opt[Boolean]("help", noshort = true, descr = "Show this message")
-  }
+    // you can add parameters a bit later
+    .args(List("-Dalpha=1","-D","betta=2","gamma=3", "Pigeon"))
+    .trailArg[String]("pet name")
 
-  println(opts.password)
+    .verify
+
+  println(opts.help)
 }
