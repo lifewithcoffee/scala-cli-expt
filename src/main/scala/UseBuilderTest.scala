@@ -1,6 +1,7 @@
 import org.rogach.scallop._
 
-object Main extends App{
+// see: https://github.com/scallop/scallop/wiki/Using-the-builder
+object UseBuilderTest extends App{
 
   val opts = Scallop(List("-d","--num-limbs","1"))
     .version("test 1.2.3 (c) 2012 Mr Placeholder")
