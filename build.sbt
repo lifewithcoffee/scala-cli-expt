@@ -1,13 +1,7 @@
-import AssemblyKeys._ // put this at the top of the file
-
 name := "scala-cli-expt"
 
-version := "1.0"
+version := "0.1"
 
-// additional dependencies
-// =======================
-libraryDependencies += "org.rogach" %% "scallop" % "0.9.5"
+scalaVersion := "2.12.8"
 
-// plugins
-// =======
-assemblySettings  // sbt-assembly (for packaging fat jar)
+//libraryDependencies += "org.rogach" % "scallop_2.10" % "3.1.5"
