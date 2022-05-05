@@ -1,4 +1,5 @@
 object MyConsoleApp extends App{
   println("hello my first scala console")
-  println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+  println("2~~~~~~~~~~~~~~~~~~~~~~~~~~~!!")
+  println("hello!!!")
 }
